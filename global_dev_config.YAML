@@ -1,0 +1,28 @@
+info:
+  app:
+    name: spring-poc-service
+    version: 0.0.1
+
+spring:
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: true
+  profiles:
+    active: dev_environment
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: test
+      password: test
+    cloud:
+      bus:
+        enabled: true
+        refresh:
+          enabled: true
+      stream:
+        bindings:
+          springCloudBusOutput:
+            destination: cloud_bus_exchange_dev_environment
+          springCloudBusInput:
+            destination: cloud_bus_exchange_dev_environment
+
